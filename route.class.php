@@ -45,6 +45,14 @@ class route
         $this -> fragment = parse_url ( 'http://' . $this -> url, PHP_URL_FRAGMENT );
     }
 
+    public function get_segment ( $index )
+    {
+        $_path = explode ( "/", $this -> path );
+        if ( !is_array ( $_path ) ) return false;
+        if ( $index > count ( $_path ) - 1 ) return false;
+        return $_path [ $index ];
+    }
+
     public function __destruct ()
     {
     }
